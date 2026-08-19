@@ -103,7 +103,14 @@
     border-bottom:1px solid var(--line);
   }
   .topbar .brandmark{font-size:.88rem;flex:none;}
-  .topbar-nav{display:none;}
+  .topbar-nav{display:none;flex:1;gap:2px;overflow:hidden;justify-content:flex-end;margin-left:18px;}
+  .topbar.nav-fits .topbar-nav{display:flex;}
+  .topbar.nav-fits .hamburger{display:none;}
+  /* off-screen clone, used only to measure the nav's natural (unwrapped) width */
+  .topbar-nav-measure{
+    position:fixed;top:-9999px;left:-9999px;visibility:hidden;pointer-events:none;
+    display:flex;flex:none;white-space:nowrap;gap:2px;
+  }
   .hamburger{
     flex:none;width:44px;height:44px;border-radius:50%;position:relative;
     background:rgba(255,255,255,.09);border:1px solid var(--line-strong);
@@ -137,17 +144,7 @@
   .menu-overlay a:active{color:var(--red-dim);}
   body.menu-open{overflow:hidden;}
 
-  /* NAV — wide-screen (desktop) inline bar, replaces hamburger above 900px */
-  @media(min-width:900px){
-    .topbar{padding:16px calc(var(--pad) + 16px);gap:18px;}
-    .topbar-nav{
-      display:flex;flex:1;gap:2px;overflow-x:auto;scrollbar-width:none;
-      justify-content:flex-end;
-    }
-    .topbar-nav::-webkit-scrollbar{display:none;}
-    .hamburger{display:none;}
-  }
-  .topbar-nav a{
+  .topbar-nav a,.topbar-nav-measure a{
     flex:none;font-family:'Archivo',sans-serif;font-weight:700;font-size:.83rem;
     color:var(--ink-mute);text-decoration:none;padding:9px 14px;border-radius:100px;
     white-space:nowrap;border:1px solid transparent;transition:color .15s ease,background .15s ease;
@@ -356,6 +353,20 @@
   </nav>
   <button class="hamburger" id="hamburgerBtn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="menuOverlay"><span></span></button>
 </header>
+
+<!-- Hidden clone of the nav, used only to measure its natural (unwrapped) width -->
+<nav class="topbar-nav-measure" id="topbarNavMeasure" aria-hidden="true">
+  <a href="#status">Status</a>
+  <a href="#location">Location</a>
+  <a href="#saal">Saal Friedrich</a>
+  <a href="#termine">Termine</a>
+  <a href="#budget">Budget</a>
+  <a href="#novum">novum Ost</a>
+  <a href="#vergleich">Vergleich</a>
+  <a href="#kooperation">RLB Tirol</a>
+  <a href="#dokumente">Dokumente</a>
+  <a href="#schritte">Next Steps</a>
+</nav>
 
 <div class="menu-overlay" id="menuOverlay">
   <nav>
@@ -902,6 +913,30 @@
     if(menuOverlay.classList.contains('open')) closeMenu(); else openMenu();
   });
   menuOverlay.querySelectorAll('a').forEach(a=> a.addEventListener('click', closeMenu));
+
+  // Switch between desktop inline nav and hamburger based on measured fit,
+  // not a fixed breakpoint — avoids clipped/overlapping nav items on in-between widths.
+  const topbar = document.getElementById('topbar');
+  const topbarBrandmark = topbar.querySelector('.brandmark');
+  const topbarNavMeasure = document.getElementById('topbarNavMeasure');
+  const FIT_BUFFER = 28; // switch to hamburger a little before it would actually clip
+
+  function updateNavMode(){
+    if(topbar.classList.contains('menu-open-lock')) return;
+    // Measure against the topbar's own width so padding/box changes stay in sync.
+    const topbarCS = getComputedStyle(topbar);
+    const padH = parseFloat(topbarCS.paddingLeft) + parseFloat(topbarCS.paddingRight);
+    const wasFit = topbar.classList.contains('nav-fits');
+    if(wasFit) topbar.classList.remove('nav-fits'); // measure against the narrower (mobile) padding baseline
+    const available = topbar.clientWidth - padH;
+    const gapReserve = 18;
+    const needed = topbarBrandmark.offsetWidth + gapReserve + topbarNavMeasure.offsetWidth + FIT_BUFFER;
+    const fits = needed <= available;
+    topbar.classList.toggle('nav-fits', fits);
+  }
+  window.addEventListener('resize', updateNavMode);
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(updateNavMode); }
+  updateNavMode();
 
   // Desktop topbar nav — active section highlight
   const sections = document.querySelectorAll('main section');
