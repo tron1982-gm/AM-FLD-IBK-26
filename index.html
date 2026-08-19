@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Future Leadership Day Innsbruck 2026 — Location Update</title>
+<meta name="description" content="Location-Empfehlung für den Future Leadership Day Innsbruck 2026: Saal Friedrich im Radisson RED Innsbruck (DAS RAIQA).">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0c0e;
+    --bg-soft:#141518;
+    --card:#18191d;
+    --line:rgba(255,255,255,.10);
+    --line-strong:rgba(255,255,255,.18);
+    --ink:#f4f3ef;
+    --ink-dim:#b7b6b0;
+    --ink-mute:#83837e;
+    --red:#e4002b;
+    --red-dim:#ff2f52;
+    --green:#4fd48a;
+    --amber:#f5b53d;
+    --radius:18px;
+    --maxw:640px;
+    --pad:20px;
+    font-size:18px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:92px;
+  }
+  h1,h2,h3,.disp{
+    font-family:'Archivo',sans-serif;
+    font-weight:800;
+    letter-spacing:-0.01em;
+    line-height:1.05;
+    margin:0 0 .5em;
+  }
+  a{color:var(--ink);}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad);}
+  section{padding:56px 0;border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:.8rem;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--red-dim);
+    margin-bottom:14px;
+  }
+  .eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red);flex:none;}
+  h2{font-size:clamp(1.7rem,6vw,2.3rem);}
+  h3{font-size:clamp(1.2rem,4.5vw,1.4rem);}
+  p{margin:0 0 1em;color:var(--ink-dim);}
+  p:last-child{margin-bottom:0;}
+  strong{color:var(--ink);font-weight:700;}
+  .lede{font-size:1.15rem;color:var(--ink);}
+
+  /* HERO */
+  .hero{
+    position:relative;min-height:100svh;display:flex;flex-direction:column;
+    justify-content:flex-end;padding:28px 0 42px;overflow:hidden;border-bottom:1px solid var(--line);
+  }
+  .hero-bg{position:absolute;inset:0;z-index:0;}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 65%;}
+  .hero-bg::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(11,12,14,.35) 0%, rgba(11,12,14,.55) 45%, rgba(11,12,14,.97) 92%);
+  }
+  .hero-top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:0 var(--pad);}
+  .brandmark{font-family:'Archivo',sans-serif;font-weight:800;font-size:.95rem;letter-spacing:.02em;}
+  .brandmark span{color:var(--red-dim);}
+  .tag-excl{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.1em;
+    color:var(--bg);background:var(--ink);padding:6px 10px;border-radius:100px;
+  }
+  .hero-content{position:relative;z-index:2;padding:0 var(--pad);}
+  .hero h1{font-size:clamp(2.5rem,11vw,3.4rem);margin-bottom:.3em;}
+  .hero h1 em{font-style:normal;color:var(--red-dim);}
+  .hero-sub{font-size:1.1rem;color:var(--ink-dim);max-width:30em;margin-bottom:22px;}
+  .hero-facts{display:flex;flex-wrap:wrap;gap:10px;}
+  .chip{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:.85rem;
+    background:rgba(255,255,255,.08);border:1px solid var(--line-strong);
+    padding:8px 14px;border-radius:100px;color:var(--ink);
+  }
+  .chip.on{background:rgba(228,0,43,.18);border-color:rgba(228,0,43,.5);color:#ffb2c0;}
+
+  /* NAV */
+  .subnav{
+    position:sticky;top:0;z-index:30;background:rgba(11,12,14,.92);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .subnav-scroll{display:flex;gap:6px;overflow-x:auto;padding:12px var(--pad);scrollbar-width:none;}
+  .subnav-scroll::-webkit-scrollbar{display:none;}
+  .subnav a{
+    flex:none;font-family:'Archivo',sans-serif;font-weight:700;font-size:.82rem;
+    color:var(--ink-mute);text-decoration:none;padding:8px 13px;border-radius:100px;white-space:nowrap;
+    border:1px solid transparent;
+  }
+  .subnav a.active{color:var(--ink);background:var(--card);border-color:var(--line-strong);}
+
+  /* STATUS STRIP */
+  .status-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:22px;}
+  .status-row{
+    display:flex;align-items:flex-start;gap:12px;background:var(--card);border:1px solid var(--line);
+    border-radius:14px;padding:14px 16px;
+  }
+  .status-dot{flex:none;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;margin-top:2px;}
+  .status-dot.ok{background:rgba(79,212,138,.18);color:var(--green);}
+  .status-dot.mid{background:rgba(245,181,61,.18);color:var(--amber);}
+  .status-row b{display:block;color:var(--ink);font-size:.98rem;}
+  .status-row span{color:var(--ink-mute);font-size:.9rem;}
+
+  /* CARDS / GALLERY */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
+  .figure{margin:20px 0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);cursor:zoom-in;}
+  .figure img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;transition:transform .5s ease;}
+  .figure:active img{transform:scale(1.03);}
+  .figure.img-fail{cursor:default;}
+  .figure.img-fail img{display:none;}
+  .figure.img-fail .fail-note{
+    aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;text-align:center;
+    padding:20px;background:var(--bg-soft);color:var(--ink-mute);font-size:.85rem;
+  }
+  .figcap{padding:10px 14px;font-size:.85rem;color:var(--ink-mute);background:var(--bg-soft);}
+  .gallery-2{display:grid;grid-template-columns:1fr;gap:12px;margin:20px 0;}
+  @media(min-width:480px){.gallery-2{grid-template-columns:1fr 1fr;}}
+
+  .fact-list{list-style:none;margin:18px 0;padding:0;display:grid;gap:10px;}
+  .fact-list li{
+    display:flex;justify-content:space-between;gap:14px;padding:12px 0;border-bottom:1px dashed var(--line);
+    font-size:.96rem;
+  }
+  .fact-list li b{color:var(--ink);font-weight:700;text-align:right;}
+  .fact-list li span{color:var(--ink-mute);}
+
+  /* VIDEO */
+  .video-card{margin:16px 0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:#000;}
+  .video-card video{width:100%;display:block;max-height:78vh;background:#000;}
+  .video-label{padding:10px 14px;font-size:.85rem;color:var(--ink-mute);background:var(--bg-soft);display:flex;justify-content:space-between;}
+
+  /* QUOTE */
+  .quote{
+    background:linear-gradient(160deg, rgba(228,0,43,.14), rgba(228,0,43,.02));
+    border:1px solid rgba(228,0,43,.28);border-radius:var(--radius);padding:22px;margin:20px 0;
+  }
+  .quote p{color:var(--ink);font-size:1.05rem;font-style:italic;}
+  .quote footer{margin-top:10px;font-size:.85rem;color:var(--ink-mute);font-style:normal;font-family:'Archivo',sans-serif;font-weight:700;}
+
+  /* TABS: TERMINE */
+  .tabs{display:flex;gap:8px;margin:20px 0 14px;overflow-x:auto;}
+  .tab-btn{
+    flex:1;min-width:100px;font-family:'Archivo',sans-serif;font-weight:700;font-size:.9rem;
+    background:var(--card);border:1px solid var(--line);color:var(--ink-dim);
+    padding:14px 10px;border-radius:14px;text-align:center;cursor:pointer;
+  }
+  .tab-btn b{display:block;font-size:1.05rem;color:var(--ink);}
+  .tab-btn .pill{display:inline-block;margin-top:6px;font-size:.68rem;padding:3px 8px;border-radius:100px;background:rgba(255,255,255,.08);}
+  .tab-btn.active{border-color:var(--red);background:rgba(228,0,43,.12);}
+  .tab-btn.active .pill{background:var(--green);color:#06210f;}
+  .tab-panel{display:none;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;}
+  .tab-panel.active{display:block;}
+
+  /* PRICING CALC */
+  .calc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin:20px 0;}
+  .calc-row{margin-bottom:18px;}
+  .calc-row label{display:flex;justify-content:space-between;font-family:'Archivo',sans-serif;font-weight:700;font-size:.9rem;margin-bottom:8px;}
+  .calc-row label span{color:var(--red-dim);}
+  input[type=range]{width:100%;accent-color:var(--red);height:6px;}
+  .pkg-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .pkg-btn{
+    background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:10px 8px;text-align:center;
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:.82rem;color:var(--ink-dim);cursor:pointer;
+  }
+  .pkg-btn b{display:block;font-size:1rem;color:var(--ink);margin-top:2px;}
+  .pkg-btn.active{border-color:var(--red);background:rgba(228,0,43,.14);color:var(--ink);}
+  .extras{margin-top:16px;display:grid;gap:8px;}
+  .extra-toggle{
+    display:flex;align-items:center;justify-content:space-between;background:var(--bg-soft);
+    border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.92rem;
+  }
+  .switch{position:relative;width:42px;height:24px;flex:none;}
+  .switch input{opacity:0;width:100%;height:100%;position:absolute;margin:0;cursor:pointer;z-index:2;}
+  .switch .track{position:absolute;inset:0;background:rgba(255,255,255,.15);border-radius:100px;transition:.2s;}
+  .switch .knob{position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:.2s;}
+  .switch input:checked + .track{background:var(--red);}
+  .switch input:checked ~ .knob{transform:translateX(18px);}
+  .calc-total{
+    margin-top:18px;padding-top:18px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;align-items:baseline;
+  }
+  .calc-total .num{font-family:'Archivo',sans-serif;font-weight:900;font-size:1.9rem;color:var(--ink);}
+  .calc-total .num small{font-size:1rem;color:var(--ink-mute);font-weight:600;}
+  .calc-note{font-size:.78rem;color:var(--ink-mute);margin-top:8px;}
+
+  /* TABLE */
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.92rem;}
+  th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);}
+  th{font-family:'Archivo',sans-serif;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mute);}
+  td.num,th.num{text-align:right;font-weight:700;}
+  tr.win td{color:var(--ink);}
+  tr.win td:first-child{position:relative;}
+
+  /* ACCORDION */
+  details{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:10px 0;overflow:hidden;}
+  summary{
+    padding:16px 18px;font-family:'Archivo',sans-serif;font-weight:700;font-size:.95rem;cursor:pointer;
+    list-style:none;display:flex;justify-content:space-between;align-items:center;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:"+";font-size:1.4rem;color:var(--ink-mute);font-weight:400;}
+  details[open] summary::after{content:"–";}
+  details .inner{padding:0 18px 18px;color:var(--ink-dim);font-size:.92rem;}
+  details .inner ul{padding-left:1.1em;margin:.5em 0;}
+  details .inner li{margin-bottom:.4em;}
+
+  /* CALLOUT */
+  .callout{border:1px solid var(--line);background:var(--bg-soft);border-radius:var(--radius);padding:20px;margin:18px 0;}
+  .callout.gold{border-color:rgba(245,181,61,.35);background:linear-gradient(160deg, rgba(245,181,61,.12), rgba(245,181,61,.02));}
+
+  /* CTA BAR */
+  .ctabar{
+    position:fixed;bottom:0;left:0;right:0;z-index:40;
+    background:rgba(11,12,14,.95);backdrop-filter:blur(10px);border-top:1px solid var(--line);
+    padding:12px var(--pad) calc(12px + env(safe-area-inset-bottom));
+  }
+  .ctabar-inner{max-width:var(--maxw);margin:0 auto;display:flex;gap:10px;}
+  .btn{
+    flex:1;font-family:'Archivo',sans-serif;font-weight:700;font-size:.92rem;text-align:center;
+    padding:14px 10px;border-radius:100px;text-decoration:none;border:1px solid var(--line-strong);color:var(--ink);
+  }
+  .btn.primary{background:var(--red);border-color:var(--red);color:#fff;}
+
+  /* FOOTER */
+  footer.page{padding:40px 0 30px;}
+  .foot-meta{font-size:.8rem;color:var(--ink-mute);line-height:1.7;}
+  .foot-meta a{color:var(--ink-dim);}
+
+  .btn-inline{
+    display:inline-flex;align-items:center;gap:8px;margin-top:6px;
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:.85rem;color:var(--ink);
+    background:rgba(255,255,255,.06);border:1px solid var(--line-strong);padding:9px 14px;border-radius:100px;
+  }
+
+  .lightbox{
+    position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.94);display:none;
+    align-items:center;justify-content:center;padding:20px;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:100%;max-height:92vh;border-radius:8px;}
+  .lightbox-close{position:absolute;top:18px;right:18px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid var(--line-strong);color:#fff;font-size:1.3rem;}
+
+  .kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0;}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 8px;text-align:center;}
+  .kpi .n{font-family:'Archivo',sans-serif;font-weight:900;font-size:1.5rem;color:var(--ink);}
+  .kpi .l{font-size:.72rem;color:var(--ink-mute);text-transform:uppercase;letter-spacing:.05em;}
+
+  .divider-label{
+    display:flex;align-items:center;gap:12px;margin:26px 0 6px;
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--ink-mute);
+  }
+  .divider-label::after{content:"";flex:1;height:1px;background:var(--line);}
+</style>
+</head>
+<body>
+
+<div class="hero" id="top">
+  <div class="hero-bg"><img src="assets/img/raiqa-exterior.jpg" alt="DAS RAIQA Gebäude, Innsbruck"></div>
+  <div class="hero-top">
+    <div class="brandmark">FUTURE<span>LEADERSHIP</span>DAY</div>
+    <div class="tag-excl">WESTÖSTERREICH · 2026</div>
+  </div>
+  <div class="hero-content">
+    <h1>Location&nbsp;Update:<br><em>Saal Friedrich.</em></h1>
+    <p class="hero-sub">Radisson RED Innsbruck, DAS RAIQA — die Empfehlung für den ersten Future Leadership Day außerhalb Wiens.</p>
+    <div class="hero-facts">
+      <span class="chip on">✓ 06.11.2026 exklusiv frei</span>
+      <span class="chip">320&nbsp;m² · bis 220 Gäste</span>
+      <span class="chip">4.&nbsp;Stock · Alpenblick</span>
+    </div>
+  </div>
+</div>
+
+<nav class="subnav">
+  <div class="subnav-scroll" id="subnavScroll">
+    <a href="#status">Status</a>
+    <a href="#location">Location</a>
+    <a href="#saal">Saal Friedrich</a>
+    <a href="#termine">Termine</a>
+    <a href="#budget">Budget</a>
+    <a href="#novum">novum Ost</a>
+    <a href="#vergleich">Vergleich</a>
+    <a href="#kooperation">RLB Tirol</a>
+    <a href="#schritte">Next Steps</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- STATUS -->
+  <section id="status">
+    <div class="eyebrow">Kurzstatus</div>
+    <h2>Wo wir stehen.</h2>
+    <p class="lede">Die Location ist geprüft, besichtigt und vorabgestimmt. Offen ist nur noch die finale Terminbestätigung durch euch.</p>
+    <div class="status-grid">
+      <div class="status-row">
+        <div class="status-dot ok">✓</div>
+        <div><b>Location besichtigt &amp; favorisiert</b><span>Saal Friedrich, Radisson RED Innsbruck — vor Ort geprüft am 10.08.2026</span></div>
+      </div>
+      <div class="status-row">
+        <div class="status-dot ok">✓</div>
+        <div><b>Termin 06.11.2026 exklusiv optioniert</b><span>Ganzer Bereich rund um den Saal (inkl. Nebenraum „Hilde") exklusiv für uns</span></div>
+      </div>
+      <div class="status-row">
+        <div class="status-dot mid">~</div>
+        <div><b>Alternativtermin 20.11.2026 in Prüfung</b><span>Ebenfalls verfügbar, kleiner Nebenraum 8–13 Uhr fremdbelegt</span></div>
+      </div>
+      <div class="status-row">
+        <div class="status-dot mid">~</div>
+        <div><b>Kooperationsidee RLB&nbsp;Tirol angestoßen</b><span>Kontakt zum Quartiersmanagement liegt vor, Konzept offen</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section id="location">
+    <div class="eyebrow">Die Location</div>
+    <h2>DAS RAIQA, Innsbruck.</h2>
+    <p>Das im Mai 2026 eröffnete Quartier der Raiffeisen-Landesbank Tirol, direkt zwischen Hauptbahnhof und Altstadt. Radisson RED bezieht darin sein erstes Haus in Tirol — ein bewusster Kontrast zu den klassischen Tagungshotels, die für Business-Events sonst infrage kommen.</p>
+
+    <div class="figure" data-lightbox="assets/img/raiqa-platz.jpg">
+      <img src="assets/img/raiqa-platz.jpg" alt="Raiffeisenplatz mit dem DAS RAIQA Quartier">
+    </div>
+    <p class="figcap" style="margin-top:-14px;margin-bottom:20px;">Raiffeisenplatz 1, 6020 Innsbruck — wenige Gehminuten vom Hauptbahnhof.</p>
+
+    <ul class="fact-list">
+      <li><span>Eröffnung</span><b>Mai 2026</b></li>
+      <li><span>Zimmer</span><b>161, gebaut mit 1.600&nbsp;m³ Tiroler Holz</b></li>
+      <li><span>Rooftop</span><b>LOFT9 im 9. Stock, Panoramaterrasse</b></li>
+      <li><span>Fitness</span><b>90&nbsp;m², 24/7 zugänglich</b></li>
+      <li><span>Anreise</span><b>wenige Gehminuten vom Hauptbahnhof</b></li>
+      <li><span>Parken</span><b>Öffentliche Tiefgarage im Haus, Tagesticket</b></li>
+    </ul>
+    <p class="calc-note">Zur Tiefgarage: Es handelt sich um eine öffentliche Tiefgarage mit Tagesticket-Kauf — ob für Teilnehmende Sonderkonditionen verhandelbar sind, klären wir mit dem Hotel.</p>
+
+    <div class="quote">
+      <p>„Restaurant im 9. Stock — mit einer der besten Rooftop-Terrassen der Stadt — bietet die Möglichkeit zum Mittagessen für alle Teilnehmenden direkt im Haus."</p>
+      <footer>— Matthias an Ali, nach der Besichtigung</footer>
+    </div>
+  </section>
+
+  <!-- SAAL FRIEDRICH -->
+  <section id="saal">
+    <div class="eyebrow">Der Saal</div>
+    <h2>Saal Friedrich.</h2>
+    <p class="lede">320&nbsp;m² im 4. Stock, freistehende Holzkonstruktion, raumhohe Fensterfront mit direktem Blick auf die Nordkette.</p>
+
+    <div class="kpi-row">
+      <div class="kpi"><div class="n">320</div><div class="l">m² Fläche</div></div>
+      <div class="kpi"><div class="n">220</div><div class="l">Gäste max.</div></div>
+      <div class="kpi"><div class="n">128</div><div class="l">m² Terrasse</div></div>
+    </div>
+
+    <div class="gallery-2">
+      <div class="figure" data-lightbox="assets/img/saal-friedrich-hall.jpg">
+        <img src="assets/img/saal-friedrich-hall.jpg" alt="Saal Friedrich, Bühnenblick">
+      </div>
+      <div class="figure" data-lightbox="assets/img/saal-friedrich-view.jpg">
+        <img src="assets/img/saal-friedrich-view.jpg" alt="Saal Friedrich, Blick auf die Nordkette">
+      </div>
+    </div>
+    <p class="figcap" style="margin-top:-6px;">Offizielle Location-Fotos, Radisson RED Innsbruck.</p>
+
+    <div class="divider-label">Rundgang vor Ort · 10.08.2026</div>
+    <p>Drei kurze Handy-Clips von der Besichtigung — ungeschnitten, damit ihr euch selbst ein Bild machen könnt.</p>
+
+    <div class="video-card">
+      <video controls playsinline preload="none" poster="assets/img/saal-friedrich-rundgang-poster.jpg">
+        <source src="assets/video/saal-friedrich-rundgang.mp4" type="video/mp4">
+      </video>
+      <div class="video-label"><span>Rundgang: Saal, Terrasse &amp; Foyer</span><span>1:22</span></div>
+    </div>
+    <div class="video-card">
+      <video controls playsinline preload="none" poster="assets/img/saal-friedrich-clip2-poster.jpg">
+        <source src="assets/video/saal-friedrich-clip2.mp4" type="video/mp4">
+      </video>
+      <div class="video-label"><span>Bestuhlung &amp; Verdunkelung (Rollos)</span><span>0:29</span></div>
+    </div>
+    <div class="video-card">
+      <video controls playsinline preload="none" poster="assets/img/saal-friedrich-clip3-poster.jpg">
+        <source src="assets/video/saal-friedrich-clip3.mp4" type="video/mp4">
+      </video>
+      <div class="video-label"><span>Bühne &amp; Licht-/Tontechnik</span><span>0:17</span></div>
+    </div>
+
+    <div class="quote">
+      <p>„Akustik und Energie fühlen sich gut an, Ausblick ist ein Traum … einzig die Einblicks-Möglichkeit — weil im 4. Stock — ist ungewöhnlich. Man kann allerdings schnell und einfach Rollos herunterfahren."</p>
+      <footer>— Matthias an Ali, 10.08.2026</footer>
+    </div>
+
+    <details>
+      <summary>Technik &amp; Ausstattung im Detail</summary>
+      <div class="inner">
+        <ul>
+          <li>LED-Leinwand, 6 Mikrofone, 6 Headsets fix im Raum verbaut</li>
+          <li>Modernste Ton- und Lichttechnik, weiteres Equipment gegen Aufpreis anfragbar</li>
+          <li>Techniker einer externen Partnerfirma ist bei Saalbuchung <b style="color:var(--ink)">verpflichtend</b> (800&nbsp;€) und begleitet den gesamten Eventtag</li>
+          <li>Technikprobe am Vorabend möglich: 80&nbsp;€ / Stunde</li>
+          <li>Bestuhlung am 06.11.: Klassenzimmer oder U-Form</li>
+          <li>Strom &amp; Nebenkosten inklusive (außer Techniker)</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- TERMINE -->
+  <section id="termine">
+    <div class="eyebrow">Termine</div>
+    <h2>Welcher Tag?</h2>
+    <p>Wichtigste Bedingung für uns: der Bereich vor dem Saal (Nebenraum „Hilde") muss exklusiv für den Leadership Day reserviert sein. Das schränkt die Auswahl ein — tippt durch die Optionen.</p>
+
+    <div class="tabs" id="dateTabs">
+      <button class="tab-btn active" data-tab="d1"><b>Fr, 06.11.</b>Empfehlung<span class="pill">frei</span></button>
+      <button class="tab-btn" data-tab="d2"><b>Fr, 20.11.</b>Option<span class="pill">fast frei</span></button>
+      <button class="tab-btn" data-tab="d3"><b>Di, 01.12.</b>Reserve<span class="pill">offen</span></button>
+    </div>
+
+    <div class="tab-panel active" id="d1">
+      <h3>Freitag, 6. November 2026</h3>
+      <p>Vollständig exklusiv — der gesamte Bereich rund um Saal Friedrich inklusive Nebenraum „Hilde" gehört an diesem Tag ausschließlich uns. Aufbau bereits ab 16:00 Uhr am Vortag (05.11.) möglich.</p>
+      <ul class="fact-list">
+        <li><span>Meeting</span><b>10:00 – 20:00 Uhr</b></li>
+        <li><span>Aufbau</span><b>ab 05.11., 16:00 Uhr</b></li>
+        <li><span>Bestuhlung</span><b>Klassenzimmer / U-Form</b></li>
+        <li><span>Exklusivität</span><b style="color:var(--green)">Vollständig</b></li>
+      </ul>
+    </div>
+    <div class="tab-panel" id="d2">
+      <h3>Freitag, 20. November 2026</h3>
+      <p>Ebenfalls verfügbar und preislich identisch. Einschränkung: ein kleinerer Nebenraum ist an diesem Tag von 8–13 Uhr bereits fremdbelegt — der Gesamtbereich ist dadurch nicht zu 100&nbsp;% exklusiv, was für den ersten Termin außerhalb Wiens ein Kompromiss wäre.</p>
+      <ul class="fact-list">
+        <li><span>Meeting</span><b>10:00 – 20:00 Uhr</b></li>
+        <li><span>Einschränkung</span><b>Nebenraum 8–13 Uhr belegt</b></li>
+        <li><span>Exklusivität</span><b style="color:var(--amber)">Größtenteils</b></li>
+      </ul>
+    </div>
+    <div class="tab-panel" id="d3">
+      <h3>Dienstag, 1. Dezember 2026</h3>
+      <p>Ursprünglich als vierte Option angefragt. Verfügbarkeit und Konditionen sind mit dem Hotel noch final zu bestätigen — als Rückfalltermin geeignet, falls November terminlich nicht passt.</p>
+      <ul class="fact-list">
+        <li><span>Status</span><b style="color:var(--ink-mute)">Wird abgeklärt</b></li>
+      </ul>
+    </div>
+
+    <div class="callout">
+      <p style="color:var(--ink)"><strong>Unsere Empfehlung:</strong> 06.11.2026 — der einzige Termin mit voller Exklusivität für den Auftakt-Event außerhalb Wiens.</p>
+    </div>
+  </section>
+
+  <!-- BUDGET / PAKETE -->
+  <section id="budget">
+    <div class="eyebrow">Pakete &amp; Budget</div>
+    <h2>Was es kostet.</h2>
+    <p>Die Radisson-Ganztagespauschalen enthalten Saalmiete, Verpflegung und Basistechnik in einem Preis pro Person. Rechnet selbst durch, was für eure Teilnehmerzahl realistisch ist.</p>
+
+    <div class="calc">
+      <div class="calc-row">
+        <label>Teilnehmende <span id="peopleOut">55</span></label>
+        <input type="range" id="peopleRange" min="40" max="70" value="55" step="1">
+      </div>
+
+      <div class="calc-row">
+        <label style="margin-bottom:10px;">Paket wählen</label>
+        <div class="pkg-grid">
+          <div class="pkg-btn" data-price="85" data-name="Keep it Simple">Keep it Simple<b>85&nbsp;€</b></div>
+          <div class="pkg-btn active" data-price="90" data-name="Tune Up (beliebtest)">Tune Up ♥<b>90&nbsp;€</b></div>
+          <div class="pkg-btn" data-price="100" data-name="Go Pro">Go Pro<b>100&nbsp;€</b></div>
+          <div class="pkg-btn" data-price="120" data-name="Top of the Range">Top of the Range<b>120&nbsp;€</b></div>
+        </div>
+      </div>
+
+      <div class="extras">
+        <div class="extra-toggle">
+          <span>Techniker (verpflichtend)</span>
+          <label class="switch"><input type="checkbox" id="tglTechniker" checked disabled><span class="track"></span><span class="knob"></span></label>
+        </div>
+        <div class="extra-toggle">
+          <span>Nebenraum „Hilde" exklusiv (+600&nbsp;€)</span>
+          <label class="switch"><input type="checkbox" id="tglHilde" checked><span class="track"></span><span class="knob"></span></label>
+        </div>
+        <div class="extra-toggle">
+          <span>Hotelzimmer für Speaker (+300&nbsp;€)</span>
+          <label class="switch"><input type="checkbox" id="tglSpeaker"><span class="track"></span><span class="knob"></span></label>
+        </div>
+      </div>
+
+      <div class="calc-total">
+        <div>Richtwert gesamt<div class="calc-note" id="calcBreakdown"></div></div>
+        <div class="num" id="calcTotal">€ 0<small>&nbsp;netto</small></div>
+      </div>
+      <div class="calc-note">Unverbindliche Kalkulation auf Basis der Angebotsdaten vom 03.–14.08.2026, zzgl. 20&nbsp;% USt. Finale Preise via Radisson-Angebot.</div>
+    </div>
+
+    <details>
+      <summary>Alle 4 Ganztagespakete im Detail</summary>
+      <div class="inner">
+        <table>
+          <tr><th>Paket</th><th class="num">€/Person</th><th>Leistungen</th></tr>
+          <tr><td>Keep it Simple</td><td class="num">85&nbsp;€</td><td>Saal, Kaffeepause AM+PM, Mittagessen</td></tr>
+          <tr><td><strong>Tune Up</strong> ♥</td><td class="num">90&nbsp;€</td><td>+ Mineralwasser &amp; Fruchtsäfte unbegrenzt</td></tr>
+          <tr><td>Go Pro</td><td class="num">100&nbsp;€</td><td>+ Begrüßungskaffee, Kaffee &amp; Tee unbegrenzt</td></tr>
+          <tr><td>Top of the Range</td><td class="num">120&nbsp;€</td><td>+ Softdrinks unbegrenzt, Energie Boost</td></tr>
+        </table>
+        <p>Halbtags-Varianten (bis 8 Std.) verfügbar zu 72 / 78 / 87 / 106&nbsp;€ pro Person, falls ein kompakteres Format gewünscht ist. Extras: Candy Bar +4&nbsp;€/Person, Gemüsesticks &amp; Dips +7&nbsp;€/Person.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- NOVUM OST -->
+  <section id="novum">
+    <div class="eyebrow">Die Alternative</div>
+    <h2>novum Ost — Saal Nordkette.</h2>
+    <p class="lede">350&nbsp;m² und knapp 6&nbsp;Meter Deckenhöhe: der große Saal im novum Innsbruck Ost ist eine ernstzunehmende, deutlich günstigere Alternative — mit kostenlosen Parkplätzen direkt vor der Tür.</p>
+
+    <div class="kpi-row">
+      <div class="kpi"><div class="n">350</div><div class="l">m² Fläche</div></div>
+      <div class="kpi"><div class="n">300</div><div class="l">Gäste max.</div></div>
+      <div class="kpi"><div class="n">5,97</div><div class="l">m Deckenhöhe</div></div>
+    </div>
+
+    <div class="gallery-2">
+      <div class="figure" data-lightbox="https://novum.at/fileadmin/userdaten/Fotos_Locations/IJW/novum-innsbruck-ost-veranstaltungszentrum-saal-buehne.jpg">
+        <img loading="lazy" onerror="imgFallback(this)" src="https://novum.at/fileadmin/userdaten/Fotos_Locations/IJW/novum-innsbruck-ost-veranstaltungszentrum-saal-buehne.jpg" alt="Saal Nordkette, novum Innsbruck Ost, Bühne">
+      </div>
+      <div class="figure" data-lightbox="https://novum.at/fileadmin/userdaten/Fotos_Locations/IJW/novum-innsbruck-ost-veranstaltungszentrum-saal-theater-bestuhlung-1.jpg">
+        <img loading="lazy" onerror="imgFallback(this)" src="https://novum.at/fileadmin/userdaten/Fotos_Locations/IJW/novum-innsbruck-ost-veranstaltungszentrum-saal-theater-bestuhlung-1.jpg" alt="Saal Nordkette, Theaterbestuhlung">
+      </div>
+    </div>
+    <div class="figure" data-lightbox="https://novum.at/fileadmin/userdaten/Fotos_Locations/IJW/novum-innsbruck-ost-veranstaltungszentrum-außenansicht.jpg">
+      <img loading="lazy" onerror="imgFallback(this)" src="https://novum.at/fileadmin/userdaten/Fotos_Locations/IJW/novum-innsbruck-ost-veranstaltungszentrum-außenansicht.jpg" alt="novum Innsbruck Ost, Außenansicht">
+    </div>
+    <p class="figcap" style="margin-top:-6px;">Offizielle Fotos, Quelle: <a href="https://novum.at/unsere-locations/tirol/novum-innsbruck-ost/" target="_blank" rel="noopener">novum.at ↗</a> (Josef-Wilberger-Straße 9, 6020 Innsbruck).</p>
+
+    <ul class="fact-list">
+      <li><span>Bühne</span><b>12 × 3,8&nbsp;m, erweiterbar</b></li>
+      <li><span>Fenster</span><b>hinter der Bühne, ebenfalls Richtung Nordkette</b></li>
+      <li><span>Boden</span><b>Parkett</b></li>
+      <li><span>Verdunkelung</span><b>außenliegende Jalousien</b></li>
+      <li><span>Ton</span><b>Nexo PS15, Behringer X32-Pult</b></li>
+      <li><span>Mikrofone</span><b>4 Funkmikrofone</b></li>
+      <li><span>Beamer</span><b>Acer PL7510, 6.000&nbsp;Lumen, Full HD</b></li>
+      <li><span>Leinwand</span><b>4 × 2,25&nbsp;m</b></li>
+      <li><span>Parkplätze</span><b style="color:var(--green)">25 kostenlos, direkt am Haus</b></li>
+    </ul>
+
+    <div class="callout">
+      <p style="color:var(--ink)"><strong>Vorteil:</strong> Für ca. 55 Teilnehmende bleibt hier viel Luft nach oben — der Saal fasst bis zu 300 Personen und wirkt dadurch großzügig statt beengt. Dazu 25 kostenlose Parkplätze direkt am Haus (3 Gehminuten), ohne Tiefgaragen-Umweg.</p>
+    </div>
+
+    <p>Einzige spürbare Einschränkung gegenüber dem RAIQA: Die Mittagssituation ist funktional, aber ohne den Show-Charakter der LOFT9-Rooftop-Terrasse. Verpflegung läuft über das hauseigene Café&nbsp;novum (Pächter, separate Abrechnung — auf Wunsch aber über eine gemeinsame Rechnung konsolidierbar).</p>
+
+    <details>
+      <summary>Kostenaufstellung — Angebot NAN/12947 vom 14.08.2026</summary>
+      <div class="inner">
+        <table>
+          <tr><th>Position</th><th class="num">Betrag</th></tr>
+          <tr><td>Saal „nordkette" (inkl. Sallicht, –10&nbsp;%)</td><td class="num">954,00&nbsp;€</td></tr>
+          <tr><td>Foyer Obergeschoss</td><td class="num">180,00&nbsp;€</td></tr>
+          <tr><td>Seminarraum „nockspitze" (Rückzug)</td><td class="num">144,00&nbsp;€</td></tr>
+          <tr><td>Seminarraum 2+3 Kombi (Bankett 64&nbsp;Pers.)</td><td class="num">306,00&nbsp;€</td></tr>
+          <tr><td>Endreinigung</td><td class="num">200,00&nbsp;€</td></tr>
+          <tr><td>Technik (Beamer, Audio, Mikros/Headsets)</td><td class="num">280,00&nbsp;€</td></tr>
+          <tr><td>Nettobetrag</td><td class="num">2.064,00&nbsp;€</td></tr>
+          <tr><td>+ 20&nbsp;% USt.</td><td class="num">412,80&nbsp;€</td></tr>
+          <tr class="win"><td><strong>Gesamt</strong></td><td class="num"><strong>2.476,80&nbsp;€</strong></td></tr>
+        </table>
+        <p>Exklusive Catering — läuft separat über Café&nbsp;novum vor Ort ab, Preise je nach Wunschmenü. Ansprechpartnerin: Judith Lieberherr, Location Managerin, <a href="mailto:innsbruck-ost@novum.at">innsbruck-ost@novum.at</a>.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- VERGLEICH -->
+  <section id="vergleich">
+    <div class="eyebrow">Zur Einordnung</div>
+    <h2>Beide Optionen im Vergleich.</h2>
+    <p>Beide Locations wurden geprüft und mit verbindlichen Angeboten hinterlegt. Auf einen Blick, was für welche Option spricht.</p>
+
+    <table>
+      <tr><th></th><th>Saal Friedrich</th><th>novum „nordkette"</th></tr>
+      <tr><td>Adresse</td><td>DAS RAIQA, Bahnhofsnähe</td><td>Josef-Wilberger-Str., Ost</td></tr>
+      <tr><td>Fläche</td><td>320&nbsp;m², bis 220 Gäste</td><td>350&nbsp;m², bis 300 Gäste</td></tr>
+      <tr><td>Deckenhöhe</td><td>offene Holzkonstruktion</td><td>5,97&nbsp;m</td></tr>
+      <tr><td>Ausblick</td><td>Nordkette, raumhoch verglast</td><td>Nordkette, hinter der Bühne</td></tr>
+      <tr><td>Terrasse</td><td>128&nbsp;m² eigene Terrasse</td><td>k.&nbsp;A.</td></tr>
+      <tr><td>Parken</td><td>Öffentl. Tiefgarage, Tagesticket</td><td style="color:var(--ink)"><strong>25 Gratis-Parkplätze am Haus</strong></td></tr>
+      <tr><td>Verpflegung</td><td>im Paket inkludiert, LOFT9-Rooftop</td><td>separat über Café novum</td></tr>
+      <tr><td class="num">Richtpreis 55&nbsp;Pers.</td><td class="num">ab ca. 4.950&nbsp;€*</td><td class="num">2.476,80&nbsp;€**</td></tr>
+    </table>
+    <p class="calc-note">*Tune-Up-Paket, exkl. Extras &amp; USt. **Saalmiete/Technik/Reinigung novum-Angebot NAN/12947 vom 14.08.2026, exkl. Catering.</p>
+
+    <div class="callout">
+      <p style="color:var(--ink)">novum Ost ist mehr als eine Notlösung: großzügiger Saal, beeindruckende Deckenhöhe, kostenloses Parken direkt vor der Tür — zum Bruchteil der Kosten. Saal Friedrich bleibt unsere Empfehlung wegen Panorama, Mittags-Erlebnis auf der LOFT9-Terrasse und der Adresse im brandneuen RAIQA. Wer stärker aufs Budget schaut oder unkompliziertes Parken priorisiert, ist mit novum sehr gut bedient.</p>
+    </div>
+  </section>
+
+  <!-- KOOPERATION -->
+  <section id="kooperation">
+    <div class="eyebrow">Zusätzliches Potenzial</div>
+    <h2>Idee: RLB&nbsp;Tirol.</h2>
+    <p>DAS RAIQA gehört der Raiffeisen-Landesbank Tirol — dem Eigentümer des gesamten Quartiers inklusive Hotel. Das eröffnet eine naheliegende Kooperationsmöglichkeit für den Innsbrucker Auftakt.</p>
+
+    <div class="gallery-2">
+      <div class="figure" data-lightbox="assets/img/raiqa-eingang.jpg">
+        <img src="assets/img/raiqa-eingang.jpg" alt="Eingangsbereich DAS RAIQA">
+      </div>
+    </div>
+
+    <div class="callout gold">
+      <p style="color:var(--ink)"><strong>Idealfall:</strong> Kooperation mit der RLB Tirol — z.&nbsp;B. ein Vorabend-Format, exklusiv für deren Mitarbeitende oder öffentlich für RLB-(Jugend-)Kund:innen.</p>
+    </div>
+
+    <p>Erster Kontakt zum Quartiersmanagement liegt bereits vor. Als zusätzliche Fläche im Quartier steht außerdem Frieda's Hub zur Verfügung — ein offener Bühnen- und Community-Bereich im Erdgeschoss, denkbar für Empfang, Networking oder den Vorabend-Vortrag.</p>
+
+    <details>
+      <summary>Kontakt Quartiersmanagement</summary>
+      <div class="inner">
+        <p>quartiersmanagement@rlb-tirol.at — zuständig für Frieda's Hub und alle Fragen rund um Kooperationen im Quartier.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- WIEN REFERENZ -->
+  <section id="referenz">
+    <div class="eyebrow">Qualitätsmaßstab</div>
+    <h2>Wie in Wien.</h2>
+    <p>Innsbruck ist 2026 die einzige Ausgabe des Formats außerhalb Wiens. Der Anspruch an Ablauf, Kuratierung und Ambiente orientiert sich am Wiener Original — Saal Friedrich ist die Location, die dieses Niveau in Tirol trägt.</p>
+    <ul class="fact-list">
+      <li><span>Wien 2026</span><b>27.11.2026, Anker Brotfabrik</b></li>
+      <li><span>Innsbruck 2026</span><b>06.11.2026, Saal Friedrich</b></li>
+      <li><span>Format</span><b>Purpose · People · Performance</b></li>
+    </ul>
+  </section>
+
+  <!-- NEXT STEPS -->
+  <section id="schritte">
+    <div class="eyebrow">Entscheidung</div>
+    <h2>Was wir von euch brauchen.</h2>
+    <div class="status-grid">
+      <div class="status-row">
+        <div class="status-dot mid">1</div>
+        <div><b>Termin final bestätigen</b><span>06.11. (empfohlen) oder 20.11.2026</span></div>
+      </div>
+      <div class="status-row">
+        <div class="status-dot mid">2</div>
+        <div><b>Paket &amp; Personenzahl grob festlegen</b><span>Empfehlung: Tune Up, ca. 55 Teilnehmende</span></div>
+      </div>
+      <div class="status-row">
+        <div class="status-dot mid">3</div>
+        <div><b>Grünes Licht für RLB-Tirol-Anfrage</b><span>Vorabend-Kooperation ja/nein?</span></div>
+      </div>
+    </div>
+    <p style="margin-top:22px;">Nach Bestätigung stellt das Radisson-Team umgehend das verbindliche Angebot zusammen — beide Termine sind aktuell für uns optioniert.</p>
+  </section>
+
+  <footer class="page">
+    <div class="foot-meta">
+      <strong style="color:var(--ink)">Matthias Lechner</strong> · NFBrands.X GmbH<br>
+      <a href="mailto:matthias.lechner@nfbrands.xyz">matthias.lechner@nfbrands.xyz</a> · +43&nbsp;699&nbsp;17181969<br><br>
+      Ansprechpartnerinnen Radisson RED Innsbruck:<br>
+      Emine Kalfa &amp; Emilia Breuer · <a href="mailto:events.innsbruck@radissonred.com">events.innsbruck@radissonred.com</a><br><br>
+      Nur für den internen Abstimmungsprozess mit Ali Mahlodji &amp; Team.
+    </div>
+  </footer>
+
+</main>
+
+<div class="ctabar">
+  <div class="ctabar-inner">
+    <a class="btn" href="#termine">Termine ansehen</a>
+    <a class="btn primary" href="mailto:matthias.lechner@nfbrands.xyz?subject=Future%20Leadership%20Day%20Innsbruck%20%E2%80%94%20Termin-Freigabe&body=Hi%20Matthias%2C%0A%0Awir%20geben%20frei%3A%0A" >Termin freigeben</a>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">✕</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<script>
+  // Fallback for hotlinked external images that fail to load
+  function imgFallback(img){
+    const fig = img.closest('.figure');
+    if(!fig || fig.classList.contains('img-fail')) return;
+    fig.classList.add('img-fail');
+    fig.removeAttribute('data-lightbox');
+    const note = document.createElement('div');
+    note.className = 'fail-note';
+    note.textContent = 'Foto aktuell nicht ladbar — Link zur Quelle in der Bildunterschrift.';
+    fig.appendChild(note);
+  }
+
+  // Subnav active state on scroll
+  const sections = document.querySelectorAll('main section, main #schritte');
+  const navLinks = document.querySelectorAll('.subnav a');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        navLinks.forEach(a=>a.classList.remove('active'));
+        const link = document.querySelector('.subnav a[href="#'+e.target.id+'"]');
+        if(link){
+          link.classList.add('active');
+          link.scrollIntoView({inline:'center', block:'nearest', behavior:'smooth'});
+        }
+      }
+    });
+  }, {rootMargin:'-45% 0px -50% 0px'});
+  sections.forEach(s=> s.id && io.observe(s));
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  document.querySelectorAll('[data-lightbox]').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      lightboxImg.src = el.getAttribute('data-lightbox');
+      lightbox.classList.add('open');
+    });
+  });
+  document.getElementById('lightboxClose').addEventListener('click', ()=> lightbox.classList.remove('open'));
+  lightbox.addEventListener('click', (e)=>{ if(e.target===lightbox) lightbox.classList.remove('open'); });
+
+  // Date tabs
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Budget calculator
+  const peopleRange = document.getElementById('peopleRange');
+  const peopleOut = document.getElementById('peopleOut');
+  const pkgBtns = document.querySelectorAll('.pkg-btn');
+  const tglHilde = document.getElementById('tglHilde');
+  const tglSpeaker = document.getElementById('tglSpeaker');
+  const calcTotal = document.getElementById('calcTotal');
+  const calcBreakdown = document.getElementById('calcBreakdown');
+  let activePkg = {price:90, name:'Tune Up (beliebtest)'};
+
+  function fmt(n){ return n.toLocaleString('de-AT'); }
+
+  function recalc(){
+    const people = parseInt(peopleRange.value,10);
+    peopleOut.textContent = people;
+    const pkgTotal = people * activePkg.price;
+    const techniker = 800;
+    const hilde = tglHilde.checked ? 600 : 0;
+    const speaker = tglSpeaker.checked ? 300 : 0;
+    const total = pkgTotal + techniker + hilde + speaker;
+    calcTotal.innerHTML = '€ ' + fmt(total) + '<small>&nbsp;netto</small>';
+    let parts = [people+' × '+activePkg.price+'€ ('+activePkg.name+') = '+fmt(pkgTotal)+'€, + Techniker 800€'];
+    if(hilde) parts.push('+ Hilde 600€');
+    if(speaker) parts.push('+ Speaker-Zimmer 300€');
+    calcBreakdown.textContent = parts.join(' ');
+  }
+
+  peopleRange.addEventListener('input', recalc);
+  tglHilde.addEventListener('change', recalc);
+  tglSpeaker.addEventListener('change', recalc);
+  pkgBtns.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      pkgBtns.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      activePkg = {price: parseInt(btn.dataset.price,10), name: btn.dataset.name};
+      recalc();
+    });
+  });
+  recalc();
+</script>
+</body>
+</html>
