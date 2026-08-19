@@ -49,7 +49,7 @@
   a{color:var(--ink);}
   img{max-width:100%;display:block;}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad);}
-  section{padding:56px 0;border-bottom:1px solid var(--line);}
+  section{padding:56px 0;border-bottom:1px solid var(--line);scroll-margin-top:84px;}
   section:last-of-type{border-bottom:none;}
   .eyebrow{
     display:inline-flex;align-items:center;gap:8px;
@@ -76,7 +76,6 @@
     content:"";position:absolute;inset:0;
     background:linear-gradient(180deg, rgba(11,12,14,.35) 0%, rgba(11,12,14,.55) 45%, rgba(11,12,14,.97) 92%);
   }
-  .hero-top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:0 var(--pad);}
   .brandmark{font-family:'Archivo',sans-serif;font-weight:800;font-size:.95rem;letter-spacing:.02em;}
   .brandmark span{color:var(--red-dim);}
   .tag-excl{
@@ -95,19 +94,47 @@
   }
   .chip.on{background:rgba(228,0,43,.18);border-color:rgba(228,0,43,.5);color:#ffb2c0;}
 
-  /* NAV */
-  .subnav{
-    position:sticky;top:0;z-index:30;background:rgba(11,12,14,.92);backdrop-filter:blur(10px);
+  /* NAV — fixed top bar + hamburger */
+  .topbar{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px var(--pad);
+    background:rgba(11,12,14,.75);backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
   }
-  .subnav-scroll{display:flex;gap:6px;overflow-x:auto;padding:12px var(--pad);scrollbar-width:none;}
-  .subnav-scroll::-webkit-scrollbar{display:none;}
-  .subnav a{
-    flex:none;font-family:'Archivo',sans-serif;font-weight:700;font-size:.82rem;
-    color:var(--ink-mute);text-decoration:none;padding:8px 13px;border-radius:100px;white-space:nowrap;
-    border:1px solid transparent;
+  .topbar .brandmark{font-size:.88rem;}
+  .hamburger{
+    flex:none;width:44px;height:44px;border-radius:50%;position:relative;
+    background:rgba(255,255,255,.09);border:1px solid var(--line-strong);
+    cursor:pointer;padding:0;-webkit-tap-highlight-color:transparent;
   }
-  .subnav a.active{color:var(--ink);background:var(--card);border-color:var(--line-strong);}
+  .hamburger span,.hamburger span::before,.hamburger span::after{
+    content:"";position:absolute;left:50%;top:50%;width:18px;height:2px;background:var(--ink);
+    border-radius:2px;transform:translate(-50%,-50%);transition:background .2s ease,transform .2s ease,opacity .2s ease;
+  }
+  .hamburger span::before{transform:translate(-50%,-7px);}
+  .hamburger span::after{transform:translate(-50%,5px);}
+  .hamburger.open span{background:transparent;}
+  .hamburger.open span::before{transform:translate(-50%,-50%) rotate(45deg);}
+  .hamburger.open span::after{transform:translate(-50%,-50%) rotate(-45deg);}
+
+  .menu-overlay{
+    position:fixed;inset:0;z-index:45;background:#0b0c0e;
+    display:flex;flex-direction:column;padding:96px var(--pad) 40px;overflow-y:auto;
+    opacity:0;visibility:hidden;transform:translateY(-10px);pointer-events:none;
+    transition:opacity .2s ease,transform .2s ease,visibility 0s linear .2s;
+  }
+  .menu-overlay.open{
+    opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto;
+    transition:opacity .2s ease,transform .2s ease;
+  }
+  .menu-overlay nav{display:flex;flex-direction:column;max-width:var(--maxw);margin:0 auto;width:100%;}
+  .menu-overlay a{
+    font-family:'Archivo',sans-serif;font-weight:800;font-size:1.4rem;letter-spacing:-.01em;
+    color:var(--ink);text-decoration:none;padding:16px 2px;border-bottom:1px solid var(--line);
+  }
+  .menu-overlay a:active{color:var(--red-dim);}
+  body.menu-open{overflow:hidden;}
 
   /* STATUS STRIP */
   .status-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:22px;}
@@ -167,7 +194,9 @@
   .tab-btn b{display:block;font-size:1.05rem;color:var(--ink);}
   .tab-btn .pill{display:inline-block;margin-top:6px;font-size:.68rem;padding:3px 8px;border-radius:100px;background:rgba(255,255,255,.08);}
   .tab-btn.active{border-color:var(--red);background:rgba(228,0,43,.12);}
-  .tab-btn.active .pill{background:var(--green);color:#06210f;}
+  .pill.st-ok{background:var(--green);color:#06210f;}
+  .pill.st-warn{background:var(--amber);color:#2b1c02;}
+  .pill.st-open{background:rgba(255,255,255,.14);color:var(--ink-dim);}
   .tab-panel{display:none;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;}
   .tab-panel.active{display:block;}
 
@@ -271,29 +300,34 @@
     text-transform:uppercase;color:var(--ink-mute);
   }
   .divider-label::after{content:"";flex:1;height:1px;background:var(--line);}
+
+  /* DOCUMENTS */
+  .doc-group{margin:22px 0 6px;}
+  .doc-list{list-style:none;margin:0 0 22px;padding:0;display:grid;gap:10px;}
+  .doc-item{
+    display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);
+    border-radius:14px;padding:14px 16px;text-decoration:none;
+  }
+  .doc-item:active{border-color:var(--line-strong);}
+  .doc-icon{
+    flex:none;width:40px;height:40px;border-radius:10px;background:rgba(228,0,43,.14);color:var(--red-dim);
+    display:flex;align-items:center;justify-content:center;font-family:'Archivo',sans-serif;font-weight:800;font-size:.65rem;
+  }
+  .doc-meta{flex:1;min-width:0;}
+  .doc-meta b{display:block;color:var(--ink);font-size:.95rem;line-height:1.3;}
+  .doc-meta span{display:block;color:var(--ink-mute);font-size:.8rem;margin-top:3px;}
+  .doc-open{flex:none;font-family:'Archivo',sans-serif;font-weight:700;font-size:.78rem;color:var(--ink-dim);white-space:nowrap;}
 </style>
 </head>
 <body>
 
-<div class="hero" id="top">
-  <div class="hero-bg"><img src="assets/img/raiqa-exterior.jpg" alt="DAS RAIQA Gebäude, Innsbruck"></div>
-  <div class="hero-top">
-    <div class="brandmark">FUTURE<span>LEADERSHIP</span>DAY</div>
-    <div class="tag-excl">WESTÖSTERREICH · 2026</div>
-  </div>
-  <div class="hero-content">
-    <h1>Location&nbsp;Update:<br><em>Saal Friedrich.</em></h1>
-    <p class="hero-sub">Radisson RED Innsbruck, DAS RAIQA — die Empfehlung für den ersten Future Leadership Day außerhalb Wiens.</p>
-    <div class="hero-facts">
-      <span class="chip on">✓ 06.11.2026 exklusiv frei</span>
-      <span class="chip">320&nbsp;m² · bis 220 Gäste</span>
-      <span class="chip">4.&nbsp;Stock · Alpenblick</span>
-    </div>
-  </div>
-</div>
+<header class="topbar" id="topbar">
+  <div class="brandmark">FUTURE<span>LEADERSHIP</span>DAY</div>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="menuOverlay"><span></span></button>
+</header>
 
-<nav class="subnav">
-  <div class="subnav-scroll" id="subnavScroll">
+<div class="menu-overlay" id="menuOverlay">
+  <nav>
     <a href="#status">Status</a>
     <a href="#location">Location</a>
     <a href="#saal">Saal Friedrich</a>
@@ -302,9 +336,24 @@
     <a href="#novum">novum Ost</a>
     <a href="#vergleich">Vergleich</a>
     <a href="#kooperation">RLB Tirol</a>
+    <a href="#dokumente">Dokumente</a>
     <a href="#schritte">Next Steps</a>
+  </nav>
+</div>
+
+<div class="hero" id="top">
+  <div class="hero-bg"><img src="assets/img/raiqa-exterior.jpg" alt="DAS RAIQA Gebäude, Innsbruck"></div>
+  <div class="hero-content">
+    <h1>Location&nbsp;Update:<br><em>Saal Friedrich.</em></h1>
+    <p class="hero-sub">Radisson RED Innsbruck, DAS RAIQA — die Empfehlung für den ersten Future Leadership Day außerhalb Wiens.</p>
+    <div class="hero-facts">
+      <span class="chip on">✓ 06.11.2026 exklusiv frei</span>
+      <span class="chip">320&nbsp;m² · bis 220 Gäste</span>
+      <span class="chip">4.&nbsp;Stock · Alpenblick</span>
+      <span class="chip">Westösterreich · 2026</span>
+    </div>
   </div>
-</nav>
+</div>
 
 <main class="wrap">
 
@@ -320,15 +369,15 @@
       </div>
       <div class="status-row">
         <div class="status-dot ok">✓</div>
-        <div><b>Termin 06.11.2026 exklusiv optioniert</b><span>Ganzer Bereich rund um den Saal (inkl. Nebenraum „Hilde") exklusiv für uns</span></div>
+        <div><b>Termin 06.11.2026 exklusiv zugesagt</b><span>Ganzer Bereich rund um den Saal (inkl. Nebenraum „Hilde") exklusiv für uns — zuletzt bestätigt am 14.08. (vor 5 Tagen) durch Emilia Breuer, aktuell also weiter gültig</span></div>
       </div>
       <div class="status-row">
         <div class="status-dot mid">~</div>
-        <div><b>Alternativtermin 20.11.2026 in Prüfung</b><span>Ebenfalls verfügbar, kleiner Nebenraum 8–13 Uhr fremdbelegt</span></div>
+        <div><b>Alternativtermine 20.11. &amp; 01.12. offen</b><span>Schriftliches Angebot (14.08.) nennt nur 06.11. als exklusiv frei — telefonisches Update zu 20.11. steht noch zur schriftlichen Bestätigung aus</span></div>
       </div>
       <div class="status-row">
         <div class="status-dot mid">~</div>
-        <div><b>Kooperationsidee RLB&nbsp;Tirol angestoßen</b><span>Kontakt zum Quartiersmanagement liegt vor, Konzept offen</span></div>
+        <div><b>Kooperationsidee RLB&nbsp;Tirol vorgemerkt</b><span>Kontaktdaten liegen vor — Kontaktaufnahme bewusst noch nicht erfolgt, wartet auf Feedback von Ali</span></div>
       </div>
     </div>
   </section>
@@ -415,11 +464,12 @@
         <ul>
           <li>LED-Leinwand, 6 Mikrofone, 6 Headsets fix im Raum verbaut</li>
           <li>Modernste Ton- und Lichttechnik, weiteres Equipment gegen Aufpreis anfragbar</li>
-          <li>Techniker einer externen Partnerfirma ist bei Saalbuchung <b style="color:var(--ink)">verpflichtend</b> (800&nbsp;€) und begleitet den gesamten Eventtag</li>
-          <li>Technikprobe am Vorabend möglich: 80&nbsp;€ / Stunde</li>
+          <li>Techniker einer externen Partnerfirma ist bei Saalbuchung <b style="color:var(--ink)">verpflichtend</b> (800&nbsp;€ Pauschale) und begleitet laut Angebot „das ganze Event"</li>
+          <li>Technikprobe am Vorabend (falls gewünscht): 80&nbsp;€ / Stunde</li>
           <li>Bestuhlung am 06.11.: Klassenzimmer oder U-Form</li>
           <li>Strom &amp; Nebenkosten inklusive (außer Techniker)</li>
         </ul>
+        <p style="color:var(--amber)"><strong>Offen:</strong> Wie viele Stunden sind in der 800&nbsp;€-Pauschale genau enthalten, und ab wann greift die zusätzliche Stunden-Rate von 80&nbsp;€? Die Unterlagen dokumentieren die 80&nbsp;€/Stunde bislang nur für eine zusätzliche Technikprobe am Vorabend — nicht explizit für ein mögliches Überziehen am Eventtag selbst. Muss mit Emine/Emilia schriftlich geklärt werden.</p>
       </div>
     </details>
   </section>
@@ -431,40 +481,42 @@
     <p>Wichtigste Bedingung für uns: der Bereich vor dem Saal (Nebenraum „Hilde") muss exklusiv für den Leadership Day reserviert sein. Das schränkt die Auswahl ein — tippt durch die Optionen.</p>
 
     <div class="tabs" id="dateTabs">
-      <button class="tab-btn active" data-tab="d1"><b>Fr, 06.11.</b>Empfehlung<span class="pill">frei</span></button>
-      <button class="tab-btn" data-tab="d2"><b>Fr, 20.11.</b>Option<span class="pill">fast frei</span></button>
-      <button class="tab-btn" data-tab="d3"><b>Di, 01.12.</b>Reserve<span class="pill">offen</span></button>
+      <button class="tab-btn active" data-tab="d1"><b>Fr, 06.11.</b>Empfehlung<span class="pill st-ok">bestätigt</span></button>
+      <button class="tab-btn" data-tab="d2"><b>Fr, 20.11.</b>Option<span class="pill st-warn">unbestätigt</span></button>
+      <button class="tab-btn" data-tab="d3"><b>Di, 01.12.</b>Reserve<span class="pill st-open">offen</span></button>
     </div>
 
     <div class="tab-panel active" id="d1">
       <h3>Freitag, 6. November 2026</h3>
-      <p>Vollständig exklusiv — der gesamte Bereich rund um Saal Friedrich inklusive Nebenraum „Hilde" gehört an diesem Tag ausschließlich uns. Aufbau bereits ab 16:00 Uhr am Vortag (05.11.) möglich.</p>
+      <p>Vollständig exklusiv — der gesamte Bereich rund um Saal Friedrich inklusive Nebenraum „Hilde" gehört an diesem Tag ausschließlich uns. Das ist laut Radisson (schriftlich, 14.08.) aktuell der <strong style="color:var(--ink)">einzige</strong> Tag mit dieser Zusage.</p>
       <ul class="fact-list">
         <li><span>Meeting</span><b>10:00 – 20:00 Uhr</b></li>
-        <li><span>Aufbau</span><b>ab 05.11., 16:00 Uhr</b></li>
+        <li><span>Aufbau-Option</span><b>ab 05.11., 16:00 Uhr</b></li>
         <li><span>Bestuhlung</span><b>Klassenzimmer / U-Form</b></li>
-        <li><span>Exklusivität</span><b style="color:var(--green)">Vollständig</b></li>
+        <li><span>Exklusivität</span><b style="color:var(--green)">Vollständig, schriftlich bestätigt</b></li>
       </ul>
+      <p class="calc-note">Der Aufbau am Vorabend (05.11., ab 16:00 Uhr) ist nicht kostenlos: reine Raumblockierung 500&nbsp;€, oder 1.800&nbsp;€ Halbtagsrate, falls am Vorabend zusätzlich ein Kick-off-Meeting stattfinden soll.</p>
     </div>
     <div class="tab-panel" id="d2">
       <h3>Freitag, 20. November 2026</h3>
-      <p>Ebenfalls verfügbar und preislich identisch. Einschränkung: ein kleinerer Nebenraum ist an diesem Tag von 8–13 Uhr bereits fremdbelegt — der Gesamtbereich ist dadurch nicht zu 100&nbsp;% exklusiv, was für den ersten Termin außerhalb Wiens ein Kompromiss wäre.</p>
+      <p>Im schriftlichen Angebot vom 14.08. ausdrücklich <strong style="color:var(--ink)">ausgeschlossen</strong> — Nebenraum „Hilde" ist laut Emilia Breuer an „den anderen Tagen" bereits belegt. Ein späteres telefonisches Update deutete an, dass 20.11. mit einer kleinen Einschränkung (Nebenraum 8–13&nbsp;Uhr fremdbelegt) doch möglich sein könnte — das steht aber noch aus, bevor wir damit planen sollten.</p>
       <ul class="fact-list">
         <li><span>Meeting</span><b>10:00 – 20:00 Uhr</b></li>
-        <li><span>Einschränkung</span><b>Nebenraum 8–13 Uhr belegt</b></li>
-        <li><span>Exklusivität</span><b style="color:var(--amber)">Größtenteils</b></li>
+        <li><span>Schriftlicher Stand</span><b style="color:var(--red-dim)">Nicht verfügbar (14.08.)</b></li>
+        <li><span>Telefonisches Update</span><b style="color:var(--amber)">Evtl. möglich — unbestätigt</b></li>
+        <li><span>Exklusivität</span><b style="color:var(--ink-mute)">Zu klären</b></li>
       </ul>
     </div>
     <div class="tab-panel" id="d3">
       <h3>Dienstag, 1. Dezember 2026</h3>
-      <p>Ursprünglich als vierte Option angefragt. Verfügbarkeit und Konditionen sind mit dem Hotel noch final zu bestätigen — als Rückfalltermin geeignet, falls November terminlich nicht passt.</p>
+      <p>Zu diesem Tag gibt es <strong style="color:var(--ink)">keine explizite Aussage</strong> in der bisherigen Korrespondenz. Emilia Breuers Formulierung „an den anderen Tagen ist der Raum Hilde schon gebucht" (14.08.) schließt ihn dem Wortlaut nach mit ein — eine gezielte Rückfrage zu genau diesem Datum steht aber noch aus.</p>
       <ul class="fact-list">
-        <li><span>Status</span><b style="color:var(--ink-mute)">Wird abgeklärt</b></li>
+        <li><span>Status</span><b style="color:var(--ink-mute)">Explizit noch nicht abgefragt</b></li>
       </ul>
     </div>
 
     <div class="callout">
-      <p style="color:var(--ink)"><strong>Unsere Empfehlung:</strong> 06.11.2026 — der einzige Termin mit voller Exklusivität für den Auftakt-Event außerhalb Wiens.</p>
+      <p style="color:var(--ink)"><strong>Unsere Empfehlung:</strong> 06.11.2026 — der einzige Termin mit schriftlich bestätigter voller Exklusivität. Für 20.11. und 01.12. fehlt noch eine verbindliche Aussage des Radisson-Teams.</p>
     </div>
   </section>
 
@@ -503,7 +555,12 @@
           <span>Hotelzimmer für Speaker (+300&nbsp;€)</span>
           <label class="switch"><input type="checkbox" id="tglSpeaker"><span class="track"></span><span class="knob"></span></label>
         </div>
+        <div class="extra-toggle">
+          <span>Aufbau-Vorabend 05.11., nur Raumblockierung (+500&nbsp;€)</span>
+          <label class="switch"><input type="checkbox" id="tglAufbau"><span class="track"></span><span class="knob"></span></label>
+        </div>
       </div>
+      <div class="calc-note">Falls am Vorabend statt reiner Raumblockierung ein Kick-off-Meeting stattfinden soll, gilt anstelle der 500&nbsp;€ die Halbtagsrate von 1.800&nbsp;€ (im Rechner nicht abgebildet).</div>
 
       <div class="calc-total">
         <div>Richtwert gesamt<div class="calc-note" id="calcBreakdown"></div></div>
@@ -630,14 +687,95 @@
       <p style="color:var(--ink)"><strong>Idealfall:</strong> Kooperation mit der RLB Tirol — z.&nbsp;B. ein Vorabend-Format, exklusiv für deren Mitarbeitende oder öffentlich für RLB-(Jugend-)Kund:innen.</p>
     </div>
 
-    <p>Erster Kontakt zum Quartiersmanagement liegt bereits vor. Als zusätzliche Fläche im Quartier steht außerdem Frieda's Hub zur Verfügung — ein offener Bühnen- und Community-Bereich im Erdgeschoss, denkbar für Empfang, Networking oder den Vorabend-Vortrag.</p>
+    <p>Die Kontaktdaten zum Quartiersmanagement liegen bereits vor — die eigentliche Kontaktaufnahme ist <strong style="color:var(--ink)">bewusst noch nicht erfolgt</strong>, da wir zuerst Alis Feedback zur Idee abwarten möchten. Als zusätzliche Fläche im Quartier steht außerdem Frieda's Hub zur Verfügung — ein offener Bühnen- und Community-Bereich im Erdgeschoss, denkbar für Empfang, Networking oder den Vorabend-Vortrag.</p>
 
     <details>
-      <summary>Kontakt Quartiersmanagement</summary>
+      <summary>Kontakt Quartiersmanagement (noch nicht kontaktiert)</summary>
       <div class="inner">
-        <p>quartiersmanagement@rlb-tirol.at — zuständig für Frieda's Hub und alle Fragen rund um Kooperationen im Quartier.</p>
+        <p>quartiersmanagement@rlb-tirol.at — zuständig für Frieda's Hub und alle Fragen rund um Kooperationen im Quartier. Sobald grünes Licht von Ali vorliegt, nehmen wir Kontakt auf.</p>
       </div>
     </details>
+  </section>
+
+  <!-- DOKUMENTE -->
+  <section id="dokumente">
+    <div class="eyebrow">Quellenmaterial</div>
+    <h2>Alle Original-Dokumente.</h2>
+    <p class="lede">Zur eigenen Prüfung: die vollständigen Original-Unterlagen vom Radisson-RED-Team und vom novum-Kontakt — unverändert, so wie sie eingelangt sind.</p>
+
+    <div class="doc-group">
+      <div class="divider-label">Radisson RED Innsbruck</div>
+      <ul class="doc-list">
+        <li><a class="doc-item" href="assets/docs/radisson-2026-08-03-antwortschreiben.pdf" target="_blank" rel="noopener">
+          <div class="doc-icon">PDF</div>
+          <div class="doc-meta"><b>Erstes Antwortschreiben</b><span>03.08.2026 · 3,7&nbsp;MB</span></div>
+          <div class="doc-open">Öffnen ↗</div>
+        </a></li>
+        <li><a class="doc-item" href="assets/docs/radisson-2026-08-10-besichtigung.pdf" target="_blank" rel="noopener">
+          <div class="doc-icon">PDF</div>
+          <div class="doc-meta"><b>Nachbericht zur Besichtigung</b><span>10.08.2026 · 3,7&nbsp;MB</span></div>
+          <div class="doc-open">Öffnen ↗</div>
+        </a></li>
+        <li><a class="doc-item" href="assets/docs/radisson-2026-08-14-angebot-nfbrands.pdf" target="_blank" rel="noopener">
+          <div class="doc-icon">PDF</div>
+          <div class="doc-meta"><b>Schriftliches Angebot</b><span>14.08.2026 · 3,7&nbsp;MB</span></div>
+          <div class="doc-open">Öffnen ↗</div>
+        </a></li>
+        <li><a class="doc-item" href="assets/docs/radisson-das-raiqa-friedas-hub-infoblatt.pdf" target="_blank" rel="noopener">
+          <div class="doc-icon">PDF</div>
+          <div class="doc-meta"><b>Infoblatt DAS RAIQA &amp; Frieda's Hub</b><span>8,4&nbsp;MB</span></div>
+          <div class="doc-open">Öffnen ↗</div>
+        </a></li>
+        <li><a class="doc-item" href="assets/docs/radisson-pauschale-ganztags.png" target="_blank" rel="noopener">
+          <div class="doc-icon">PNG</div>
+          <div class="doc-meta"><b>Preisübersicht Ganztagespauschalen</b><span>176&nbsp;KB</span></div>
+          <div class="doc-open">Öffnen ↗</div>
+        </a></li>
+        <li><a class="doc-item" href="assets/docs/radisson-pauschale-halbtags.png" target="_blank" rel="noopener">
+          <div class="doc-icon">PNG</div>
+          <div class="doc-meta"><b>Preisübersicht Halbtagespauschalen</b><span>140&nbsp;KB</span></div>
+          <div class="doc-open">Öffnen ↗</div>
+        </a></li>
+      </ul>
+    </div>
+
+    <div class="doc-group">
+      <div class="divider-label">novum Innsbruck Ost</div>
+      <ul class="doc-list">
+        <li><a class="doc-item" href="assets/docs/novum-2026-08-06-anfrage.pdf" target="_blank" rel="noopener">
+          <div class="doc-icon">PDF</div>
+          <div class="doc-meta"><b>Erste Anfrage &amp; Antwort</b><span>06.08.2026 · 564&nbsp;KB</span></div>
+          <div class="doc-open">Öffnen ↗</div>
+        </a></li>
+        <li><a class="doc-item" href="assets/docs/novum-2026-08-13-anfrage.pdf" target="_blank" rel="noopener">
+          <div class="doc-icon">PDF</div>
+          <div class="doc-meta"><b>Rückfrage &amp; Antwort</b><span>13.08.2026 · 576&nbsp;KB</span></div>
+          <div class="doc-open">Öffnen ↗</div>
+        </a></li>
+        <li><a class="doc-item" href="assets/docs/novum-2026-08-14-anfrage.pdf" target="_blank" rel="noopener">
+          <div class="doc-icon">PDF</div>
+          <div class="doc-meta"><b>Detailanfrage &amp; Antwort</b><span>14.08.2026 · 5,8&nbsp;MB</span></div>
+          <div class="doc-open">Öffnen ↗</div>
+        </a></li>
+        <li><a class="doc-item" href="assets/docs/novum-angebot-nan12947.pdf" target="_blank" rel="noopener">
+          <div class="doc-icon">PDF</div>
+          <div class="doc-meta"><b>Schriftliches Angebot NAN/12947</b><span>14.08.2026 · 56&nbsp;KB</span></div>
+          <div class="doc-open">Öffnen ↗</div>
+        </a></li>
+        <li><a class="doc-item" href="assets/docs/novum-hausordnung-2026.pdf" target="_blank" rel="noopener">
+          <div class="doc-icon">PDF</div>
+          <div class="doc-meta"><b>Hausordnung 2026</b><span>72&nbsp;KB</span></div>
+          <div class="doc-open">Öffnen ↗</div>
+        </a></li>
+        <li><a class="doc-item" href="assets/docs/novum-info-parkplaetze.pdf" target="_blank" rel="noopener">
+          <div class="doc-icon">PDF</div>
+          <div class="doc-meta"><b>Info Parkplätze</b><span>116&nbsp;KB</span></div>
+          <div class="doc-open">Öffnen ↗</div>
+        </a></li>
+      </ul>
+    </div>
+
+    <p class="calc-note">Alle Dokumente unverändert bereitgestellt, wie sie per E-Mail eingegangen sind.</p>
   </section>
 
   <!-- WIEN REFERENZ -->
@@ -659,18 +797,22 @@
     <div class="status-grid">
       <div class="status-row">
         <div class="status-dot mid">1</div>
-        <div><b>Termin final bestätigen</b><span>06.11. (empfohlen) oder 20.11.2026</span></div>
+        <div><b>Termin final bestätigen</b><span>06.11. ist die einzige schriftlich bestätigte Option — 20.11./01.12. nur bei Bedarf gesondert anfragen</span></div>
       </div>
       <div class="status-row">
         <div class="status-dot mid">2</div>
-        <div><b>Paket &amp; Personenzahl grob festlegen</b><span>Empfehlung: Tune Up, ca. 55 Teilnehmende</span></div>
+        <div><b>Paket, Personenzahl &amp; Cateringwünsche an Emilia senden</b><span>Empfehlung: Tune Up, ca. 55 Teilnehmende — sie wartet seit 14.08. genau darauf, um das vorläufige Angebot zu erstellen</span></div>
       </div>
       <div class="status-row">
         <div class="status-dot mid">3</div>
-        <div><b>Grünes Licht für RLB-Tirol-Anfrage</b><span>Vorabend-Kooperation ja/nein?</span></div>
+        <div><b>Grünes Licht für RLB-Tirol-Kontaktaufnahme</b><span>Vorabend-Kooperation ja/nein? Erst danach nehmen wir Kontakt auf</span></div>
+      </div>
+      <div class="status-row">
+        <div class="status-dot mid">4</div>
+        <div><b>Offene Fragen ans Radisson-Team</b><span>Techniker-Stundenkontingent in den 800&nbsp;€, Exklusivität 20.11./01.12., Sonderkonditionen Tiefgarage</span></div>
       </div>
     </div>
-    <p style="margin-top:22px;">Nach Bestätigung stellt das Radisson-Team umgehend das verbindliche Angebot zusammen — beide Termine sind aktuell für uns optioniert.</p>
+    <p style="margin-top:22px;">Der Ball liegt bei uns: Emilia Breuer hat den 06.11. am 14.08. (vor 5 Tagen) zugesagt und wartet seither auf unsere Cateringwünsche, um daraus das vorläufige Angebot zu erstellen — das ist also aktueller Stand, kein abgelaufenes Hold. Sobald wir ihr antworten, kommt das schriftliche Angebot.</p>
   </section>
 
   <footer class="page">
@@ -710,22 +852,25 @@
     fig.appendChild(note);
   }
 
-  // Subnav active state on scroll
-  const sections = document.querySelectorAll('main section, main #schritte');
-  const navLinks = document.querySelectorAll('.subnav a');
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        navLinks.forEach(a=>a.classList.remove('active'));
-        const link = document.querySelector('.subnav a[href="#'+e.target.id+'"]');
-        if(link){
-          link.classList.add('active');
-          link.scrollIntoView({inline:'center', block:'nearest', behavior:'smooth'});
-        }
-      }
-    });
-  }, {rootMargin:'-45% 0px -50% 0px'});
-  sections.forEach(s=> s.id && io.observe(s));
+  // Hamburger menu
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const menuOverlay = document.getElementById('menuOverlay');
+  function closeMenu(){
+    hamburgerBtn.classList.remove('open');
+    hamburgerBtn.setAttribute('aria-expanded','false');
+    menuOverlay.classList.remove('open');
+    document.body.classList.remove('menu-open');
+  }
+  function openMenu(){
+    hamburgerBtn.classList.add('open');
+    hamburgerBtn.setAttribute('aria-expanded','true');
+    menuOverlay.classList.add('open');
+    document.body.classList.add('menu-open');
+  }
+  hamburgerBtn.addEventListener('click', ()=>{
+    if(menuOverlay.classList.contains('open')) closeMenu(); else openMenu();
+  });
+  menuOverlay.querySelectorAll('a').forEach(a=> a.addEventListener('click', closeMenu));
 
   // Lightbox
   const lightbox = document.getElementById('lightbox');
@@ -755,6 +900,7 @@
   const pkgBtns = document.querySelectorAll('.pkg-btn');
   const tglHilde = document.getElementById('tglHilde');
   const tglSpeaker = document.getElementById('tglSpeaker');
+  const tglAufbau = document.getElementById('tglAufbau');
   const calcTotal = document.getElementById('calcTotal');
   const calcBreakdown = document.getElementById('calcBreakdown');
   let activePkg = {price:90, name:'Tune Up (beliebtest)'};
@@ -768,17 +914,20 @@
     const techniker = 800;
     const hilde = tglHilde.checked ? 600 : 0;
     const speaker = tglSpeaker.checked ? 300 : 0;
-    const total = pkgTotal + techniker + hilde + speaker;
+    const aufbau = tglAufbau.checked ? 500 : 0;
+    const total = pkgTotal + techniker + hilde + speaker + aufbau;
     calcTotal.innerHTML = '€ ' + fmt(total) + '<small>&nbsp;netto</small>';
     let parts = [people+' × '+activePkg.price+'€ ('+activePkg.name+') = '+fmt(pkgTotal)+'€, + Techniker 800€'];
     if(hilde) parts.push('+ Hilde 600€');
     if(speaker) parts.push('+ Speaker-Zimmer 300€');
+    if(aufbau) parts.push('+ Aufbau-Vorabend 500€');
     calcBreakdown.textContent = parts.join(' ');
   }
 
   peopleRange.addEventListener('input', recalc);
   tglHilde.addEventListener('change', recalc);
   tglSpeaker.addEventListener('change', recalc);
+  tglAufbau.addEventListener('change', recalc);
   pkgBtns.forEach(btn=>{
     btn.addEventListener('click', ()=>{
       pkgBtns.forEach(b=>b.classList.remove('active'));
